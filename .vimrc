@@ -7,7 +7,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'wellsjo/wellsokai.vim'    " colorscheme
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
 
 call plug#end()
 
@@ -31,4 +33,4 @@ set autoread                    " Auto-reload changed files
 "" Mappings
 :map <Leader>f :NERDTreeFind<CR>
 
-colorscheme wellsokai
+colorscheme hybrid_material
