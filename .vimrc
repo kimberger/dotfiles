@@ -10,10 +10,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
+Plug 'tpope/vim-dispatch'
 
 call plug#end()
 
-:let mapleader = ","
+let mapleader = ","
 
 "" Whitespace
 set nowrap                      " don't wrap lines
@@ -31,6 +32,7 @@ set noswapfile                  " Git handles version controlling
 set autoread                    " Auto-reload changed files
 
 "" Mappings
-:map <Leader>f :NERDTreeFind<CR>
+map <Leader>f :NERDTreeFind<CR>
+map <Leader>ra :Dispatch bundle exec rspec<CR>
 
 colorscheme hybrid_material
