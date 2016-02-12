@@ -18,7 +18,7 @@ let mapleader = ","
 
 "" Whitespace
 set nowrap                      " don't wrap lines
-set tabstop=2 shiftwidth=2      " a tab is two spaces
+set softtabstop=2 shiftwidth=2  " a tab is two spaces
 set expandtab                   " use spaces
 set cursorline                  " highlight current line
 set colorcolumn=80              " highlight end of line 
