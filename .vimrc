@@ -27,6 +27,7 @@ set sidescroll=1
 set sidescrolloff=15
 set list listchars=tab:»·,trail:·
 
+set hlsearch
 set number                      " always show line numbers
 set noswapfile                  " Git handles version controlling
 set autoread                    " Auto-reload changed files
