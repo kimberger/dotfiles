@@ -11,6 +11,7 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'tpope/vim-dispatch'
+Plug 'elixir-lang/vim-elixir'
 
 call plug#end()
 
