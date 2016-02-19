@@ -12,6 +12,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'tpope/vim-dispatch'
 Plug 'elixir-lang/vim-elixir'
+Plug 'terryma/vim-expand-region'
 
 call plug#end()
 
@@ -36,5 +37,7 @@ set autoread                    " Auto-reload changed files
 "" Mappings
 map <Leader>f :NERDTreeFind<CR>
 map <Leader>ra :Dispatch bundle exec rspec<CR>
+map = <Plug>(expand_region_expand)
+map - <Plug>(expand_region_shrink)
 
 colorscheme hybrid_material
