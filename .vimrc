@@ -40,4 +40,10 @@ map <Leader>ra :Dispatch bundle exec rspec<CR>
 map = <Plug>(expand_region_expand)
 map - <Plug>(expand_region_shrink)
 
+"" Quicker split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 colorscheme hybrid_material
