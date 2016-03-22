@@ -42,7 +42,8 @@ set smartcase                   " ... unless they contain at least one capital l
 
 "" Mappings
 map <Leader>f :NERDTreeFind<CR>
-map <Leader>ra :Dispatch bundle exec rspec<CR>
+map <Leader>ra :!bundle exec rspec<CR>
+map <Leader><Leader> :!
 map = <Plug>(expand_region_expand)
 map - <Plug>(expand_region_shrink)
 
