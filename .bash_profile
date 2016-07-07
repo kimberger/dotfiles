@@ -12,3 +12,8 @@ alias ls='ls -pla'
 alias rake='bundle exec rake'
 alias rspec='bundle exec rspec'
 alias cap='bundle exec cap'
+
+history_search() {
+  cat ~/.bash_history | grep $1 | sort | uniq
+}
+alias history=history_search
