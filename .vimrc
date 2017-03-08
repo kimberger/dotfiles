@@ -10,10 +10,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
-Plug 'tpope/vim-dispatch'
 Plug 'elixir-lang/vim-elixir'
-Plug 'terryma/vim-expand-region'
 Plug 'rking/ag.vim'
+Plug 'tpope/vim-surround'
+Plug 'evidens/vim-twig'
+Plug 'tpope/vim-rails'
+Plug 'rhysd/vim-crystal'
 
 call plug#end()
 
@@ -24,12 +26,13 @@ set nowrap                      " don't wrap lines
 set softtabstop=2 shiftwidth=2  " a tab is two spaces
 set expandtab                   " use spaces
 set cursorline                  " highlight current line
-set colorcolumn=80              " highlight end of line 
-set scrolloff=8                 " keep 8 lines around cursor 
+set colorcolumn=80              " highlight end of line
+set scrolloff=8                 " keep 8 lines around cursor
 set sidescroll=1
 set sidescrolloff=15
 set list listchars=tab:»·,trail:·
 
+set relativenumber
 set number                      " always show line numbers
 set noswapfile                  " Git handles version controlling
 set autoread                    " Auto-reload changed files
@@ -43,9 +46,9 @@ set smartcase                   " ... unless they contain at least one capital l
 "" Mappings
 map <Leader>f :NERDTreeFind<CR>
 map <Leader>ra :!bundle exec rspec<CR>
+map <Leader>vt :vsplit\|terminal<CR>
+map <Leader>ht :split\|terminal<CR>
 map <Leader><Leader> :!
-map = <Plug>(expand_region_expand)
-map - <Plug>(expand_region_shrink)
 
 "" Quicker split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -54,6 +57,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 colorscheme hybrid_material
+
+syntax on
+filetype on
+au BufNewFile,BufRead *.ecr set filetype=html
 
 "" Use Ag
 nnoremap <leader>* :call ag#Ag('grep', '--literal ' . shellescape(expand("<cword>")))<CR>
