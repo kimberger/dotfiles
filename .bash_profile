@@ -1,6 +1,8 @@
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PYENV_ROOT=/usr/local/var/pyenv
 eval "$(rbenv init -)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # Git branch in prompt.
 parse_git_branch() {
@@ -13,7 +15,4 @@ alias rake='bundle exec rake'
 alias rspec='bundle exec rspec'
 alias cap='bundle exec cap'
 
-history_search() {
-  cat ~/.bash_history | grep $1 | sort | uniq
-}
-alias history=history_search
+export FZF_DEFAULT_COMMAND='ag -g ""'
