@@ -5,7 +5,6 @@ filetype plugin indent on
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kana/vim-textobj-user'
@@ -16,6 +15,9 @@ Plug 'tpope/vim-surround'
 Plug 'evidens/vim-twig'
 Plug 'tpope/vim-rails'
 Plug 'rhysd/vim-crystal'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -36,14 +38,17 @@ set relativenumber
 set number                      " always show line numbers
 set noswapfile                  " Git handles version controlling
 set autoread                    " Auto-reload changed files
+autocmd FocusGained * silent! checktime
 
 "" Searching
 set hlsearch                    " highlight matches
 set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
+set rtp+=/usr/local/opt/fzf
 
 "" Mappings
+map <silent> <C-p> :Files<CR>
 map <Leader>f :NERDTreeFind<CR>
 map <Leader>ra :!bundle exec rspec<CR>
 map <Leader>vt :vsplit\|terminal<CR>
@@ -62,16 +67,18 @@ syntax on
 filetype on
 au BufNewFile,BufRead *.ecr set filetype=html
 
-"" Use Ag
-nnoremap <leader>* :call ag#Ag('grep', '--literal ' . shellescape(expand("<cword>")))<CR>
-let g:ctrlp_use_caching = 0
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
+"" ALE
+filetype off
+let &runtimepath.=',~/.vim/bundle/ale'
+filetype plugin on
 
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-  let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-    \ }
-endif
+"" FZF
+let g:fzf_nvim_statusline = 0
+let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_history_dir = './.vim/fzf-history'
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
