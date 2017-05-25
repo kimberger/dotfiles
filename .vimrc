@@ -1,4 +1,3 @@
-set nocompatible
 set backspace=indent,eol,start
 syntax on
 filetype plugin indent on
@@ -17,7 +16,9 @@ Plug 'tpope/vim-rails'
 Plug 'rhysd/vim-crystal'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
+Plug 'slim-template/vim-slim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -38,6 +39,7 @@ set relativenumber
 set number                      " always show line numbers
 set noswapfile                  " Git handles version controlling
 set autoread                    " Auto-reload changed files
+set mouse=a                     " Enable mouse
 autocmd FocusGained * silent! checktime
 
 "" Searching
@@ -61,7 +63,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+set background=dark
 colorscheme hybrid_material
+set updatetime=250
 
 syntax on
 filetype on
@@ -75,7 +79,7 @@ filetype plugin on
 "" FZF
 let g:fzf_nvim_statusline = 0
 let g:fzf_layout = { 'down': '~20%' }
-let g:fzf_history_dir = './.vim/fzf-history'
+let g:fzf_history_dir = '~/.vim/fzf-history'
 
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>,
